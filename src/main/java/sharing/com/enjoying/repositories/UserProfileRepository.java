@@ -6,5 +6,5 @@ import sharing.com.enjoying.models.UserProfileModel;
 import java.util.List;
 
 public interface UserProfileRepository extends JpaRepository <UserProfileModel, Long> {
-
+    List<UserProfileModel> findAllUserProfileModelByNameEqualsIgnoreCase(String name);
 }
