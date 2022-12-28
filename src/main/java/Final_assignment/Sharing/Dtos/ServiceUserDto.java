@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class ServiceUserDto {
     //Attribute or variable. Type of service that is looking the consumer of the platform.
-    private Long id;
-    private String typerOfService;
-    private String particularInterest;
-    private String placeToTravel;
-    private Date period;
+    public Long id;
+    public String typerOfService;
+    public String particularInterest;
+    public String placeToTravel;
+    public Date period;
 
     //Default constructor
     public ServiceUserDto(){}

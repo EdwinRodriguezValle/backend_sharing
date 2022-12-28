@@ -5,20 +5,22 @@ import java.util.Date;
 public class UserProfileDto {
 
     // Attribute or variable
-    private Long id;
-    private String name;
-    private String lastName;
-    private String language;
-    private String gender;
-    private Date birthday;
-    private String Address;
-    private String email;
-    private int telephone;
+    public Long id;
+    public String name;
+    public String lastName;
+    public String language;
+    public String gender;
+    public Date birthday;
+    public String address;
+    public String email;
+    public int telephone;
 
     //Default constructor
     public  UserProfileDto(){}
 
     //Constructor
+
+
     public UserProfileDto(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone) {
         this.id = id;
         this.name = name;
@@ -26,7 +28,7 @@ public class UserProfileDto {
         this.language = language;
         this.gender = gender;
         this.birthday = birthday;
-        Address = address;
+        this.address = address;
         this.email = email;
         this.telephone = telephone;
     }
@@ -57,7 +59,7 @@ public class UserProfileDto {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public String getEmail() {
@@ -94,7 +96,7 @@ public class UserProfileDto {
     }
 
     public void setAddress(String address) {
-        Address = address;
+        address = address;
     }
 
     public void setEmail(String email) {

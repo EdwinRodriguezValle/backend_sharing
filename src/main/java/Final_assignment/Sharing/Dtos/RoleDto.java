@@ -2,7 +2,7 @@ package Final_assignment.Sharing.Dtos;
 
 public class RoleDto {
 
-    private String rolename;
+    public String rolename;
 
     public RoleDto(){}
 

@@ -3,13 +3,13 @@ package Final_assignment.Sharing.Dtos;
 public class ServiceProviderDto {
 
     //Attribute or constructor
-    private Long id;
-    private String rentFamiliarHouse;
-    private String rentRoomAtFamiliarHouse;
-    private String rentHostel;
-    private String rentHotel;
-    private String rentPrivateHouse;
-    private String price;
+    public Long id;
+    public String rentFamiliarHouse;
+    public String rentRoomAtFamiliarHouse;
+    public String rentHostel;
+    public String rentHotel;
+    public String rentPrivateHouse;
+    public String price;
 
     //Default constructor
     public ServiceProviderDto (){}

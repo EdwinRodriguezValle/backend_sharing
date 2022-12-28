@@ -1,11 +1,8 @@
 package Final_assignment.Sharing.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.ListIndexBase;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class UserProfileModel {
@@ -20,7 +17,7 @@ public class UserProfileModel {
     private String language;
     private String gender;
     private Date birthday;
-    private String Address;
+    private String address;
     private String email;
     private int telephone;
 
@@ -41,8 +38,6 @@ public class UserProfileModel {
     public UserProfileModel(){}
 
     //Constructor for each attribute
-
-
     public UserProfileModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, RoleModel roleModel, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel) {
         this.id = id;
         this.name = name;
@@ -50,7 +45,7 @@ public class UserProfileModel {
         this.language = language;
         this.gender = gender;
         this.birthday = birthday;
-        Address = address;
+        this.address = address;
         this.email = email;
         this.telephone = telephone;
         this.roleModel = roleModel;
@@ -85,7 +80,7 @@ public class UserProfileModel {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public String getEmail() {
@@ -135,9 +130,8 @@ public class UserProfileModel {
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
