@@ -1,47 +1,52 @@
 package Final_assignment.Sharing.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "roles")
+@Table(name="roles")
 public class RoleModel {
-    //Auto generated id
+    //Generated Id
     @Id
-    @GeneratedValue
     private String rolename;
 
-    //OneToMany relation with UserProfile
-    @OneToMany(mappedBy = "roleModel")
-    @JsonIgnore
-    List<UserProfileModel> userProfileModels;
+    //ManyToMany relation
+
+    @ManyToMany(mappedBy = "roleModels")
+    private Collection<UserModel> userModels;
 
     //Default constructor
     public RoleModel(){}
 
-    //Constructors
-    public RoleModel(String rolename, List<UserProfileModel> userProfileModels) {
+    //Constructor
+
+    public RoleModel(String rolename, Collection<UserModel> userModels) {
         this.rolename = rolename;
-        this.userProfileModels = userProfileModels;
+        this.userModels = userModels;
     }
 
+
     //Getters
+
     public String getRolename() {
         return rolename;
     }
 
-    public List<UserProfileModel> getUserProfileModels() {
-        return userProfileModels;
+    public Collection<UserModel> getUserModels() {
+        return userModels;
     }
 
     //Setters
+
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
 
-    public void setUserProfileModels(List<UserProfileModel> userProfileModels) {
-        this.userProfileModels = userProfileModels;
+    public void setUserModels(Collection<UserModel> userModels) {
+        this.userModels = userModels;
     }
 }

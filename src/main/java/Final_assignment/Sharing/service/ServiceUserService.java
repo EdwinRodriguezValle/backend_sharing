@@ -18,7 +18,7 @@ public class ServiceUserService {
 
     //Crud methods
     // Getting all the service user from  repository and transferring to Dtos to be user in the end points
-    public List<ServiceUserDto> getAllServiceUserDto(){
+    public List<ServiceUserDto> getAllServiceUser(){
         List<ServiceUserModel> serviceUserModels = serviceUserRepository.findAll();
         List<ServiceUserDto> dtos = new ArrayList<>();
         for(ServiceUserModel sum :serviceUserModels ){
@@ -28,7 +28,7 @@ public class ServiceUserService {
     }
 
     //Get individual service user to be transfer to the client if it exists in de database
-    public ServiceUserDto getServiceUser(long id){
+    public ServiceUserDto getServiceUserById(long id){
         Optional<ServiceUserModel> serviceUserModel = serviceUserRepository.findById(id);
         if(serviceUserModel.isPresent()){
             ServiceUserDto serviceUserDto = transferFromServiceUserModelToDto(serviceUserModel.get());

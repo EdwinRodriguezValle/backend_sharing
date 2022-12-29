@@ -17,16 +17,6 @@ public class CommentsService {
     private CommentsRepository commentsRepository;
 
     //Crud methods
-    // Getting all the comments from  repository and transferring to Dtos to be user in the end points
-    public List<CommentsDto> getAllCommentsModel(){
-        List<CommentsDto> dtos = new ArrayList<>();
-        List<CommentsModel> commentsModels = commentsRepository.findAll();
-        for(CommentsModel cm : commentsModels){
-            dtos.add(transferFromCommentsModelToDto(cm));
-        }
-        return dtos;
-    }
-
     //Get individual comments to be transfer to the client if exists in de database
      public CommentsDto getComments (long id){
         Optional<CommentsModel> commentsModel = commentsRepository.findById(id);

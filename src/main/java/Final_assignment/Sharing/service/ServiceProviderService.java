@@ -19,7 +19,7 @@ public class ServiceProviderService {
     //Crud methods
 
     // Getting all the service provider from  repository and transferring to Dtos to be user in the end points
-    public List<ServiceProviderDto> getAllServicesPriveder() {
+    public List<ServiceProviderDto> getAllServicesProvider() {
         List<ServiceProviderModel> serviceProviderModels = serviceProviderRepository.findAll();
         List<ServiceProviderDto> dtos = new ArrayList<>();
         for (ServiceProviderModel sm : serviceProviderModels) {
@@ -29,7 +29,7 @@ public class ServiceProviderService {
     }
 
     //Get individual service provider to be transfer to the client if it exists in de database
-    public ServiceProviderDto getServiceModel(long id) {
+    public ServiceProviderDto getServiceProviderModel(long id) {
         Optional<ServiceProviderModel> spm = serviceProviderRepository.findById(id);
         if(spm.isPresent()) {
             ServiceProviderDto sp = transferFromServiceProviderModelToDto(spm.get());

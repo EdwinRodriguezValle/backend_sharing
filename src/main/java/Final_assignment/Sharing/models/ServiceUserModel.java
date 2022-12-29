@@ -41,9 +41,8 @@ public class ServiceUserModel  extends UserProfileModel{
     public ServiceUserModel(){}
 
     //Constructors
-
-    public ServiceUserModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, RoleModel roleModel, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel, Long id1, String typerOfService, String particularInterest, String placeToTravel, Date period, Collection<BookingModel> bookingModels, Collection<RatingModel> ratingModels, Collection<CommentsModel> commentsModels, UserProfileModel userProfileModel) {
-        super(id, name, lastName, language, gender, birthday, address, email, telephone, roleModel, serviceUserModel, serviceProviderModel);
+        public ServiceUserModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel, Long id1, String typerOfService, String particularInterest, String placeToTravel, Date period, Collection<BookingModel> bookingModels, Collection<RatingModel> ratingModels, Collection<CommentsModel> commentsModels, UserProfileModel userProfileModel) {
+        super(id, name, lastName, language, gender, birthday, address, email, telephone, serviceUserModel, serviceProviderModel);
         this.id = id1;
         this.typerOfService = typerOfService;
         this.particularInterest = particularInterest;
@@ -54,6 +53,7 @@ public class ServiceUserModel  extends UserProfileModel{
         this.commentsModels = commentsModels;
         this.userProfileModel = userProfileModel;
     }
+
 
     //Getters
 
@@ -94,6 +94,7 @@ public class ServiceUserModel  extends UserProfileModel{
         return userProfileModel;
     }
 
+
     //Setters
 
     @Override
@@ -132,5 +133,4 @@ public class ServiceUserModel  extends UserProfileModel{
     public void setUserProfileModel(UserProfileModel userProfileModel) {
         this.userProfileModel = userProfileModel;
     }
-
 }

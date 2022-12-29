@@ -1,16 +1,9 @@
 package Final_assignment.Sharing.Dtos;
 
-public class RoleDto {
+import jakarta.persistence.Id;
 
+public class RoleDto {
+    @Id
     public String rolename;
 
-    public RoleDto(){}
-
-    public String getRolename() {
-        return rolename;
-    }
-
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
-    }
 }

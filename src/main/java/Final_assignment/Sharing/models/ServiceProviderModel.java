@@ -38,8 +38,22 @@ public class ServiceProviderModel extends UserProfileModel{
     public ServiceProviderModel(){}
 
     //Constructors for all of attribute
-    public ServiceProviderModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, RoleModel roleModel, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel, Long id1, String rentFamiliarHouse, String rentRoomAtFamiliarHouse, String rentHostel, String rentHotel, String rentPrivateHouse, String price, Collection<BookingModel> bookingModels, Collection<RatingModel> ratingModels, ServiceProviderModel serviceProviderModel1) {
-        super(id, name, lastName, language, gender, birthday, address, email, telephone, roleModel, serviceUserModel, serviceProviderModel);
+
+    public ServiceProviderModel(Long id, String rentFamiliarHouse, String rentRoomAtFamiliarHouse, String rentHostel, String rentHotel, String rentPrivateHouse, String price, Collection<BookingModel> bookingModels, Collection<RatingModel> ratingModels, ServiceProviderModel serviceProviderModel) {
+        this.id = id;
+        this.rentFamiliarHouse = rentFamiliarHouse;
+        this.rentRoomAtFamiliarHouse = rentRoomAtFamiliarHouse;
+        this.rentHostel = rentHostel;
+        this.rentHotel = rentHotel;
+        this.rentPrivateHouse = rentPrivateHouse;
+        this.price = price;
+        this.bookingModels = bookingModels;
+        this.ratingModels = ratingModels;
+        this.serviceProviderModel = serviceProviderModel;
+    }
+
+    public ServiceProviderModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel, Long id1, String rentFamiliarHouse, String rentRoomAtFamiliarHouse, String rentHostel, String rentHotel, String rentPrivateHouse, String price, Collection<BookingModel> bookingModels, Collection<RatingModel> ratingModels, ServiceProviderModel serviceProviderModel1) {
+        super(id, name, lastName, language, gender, birthday, address, email, telephone, serviceUserModel, serviceProviderModel);
         this.id = id1;
         this.rentFamiliarHouse = rentFamiliarHouse;
         this.rentRoomAtFamiliarHouse = rentRoomAtFamiliarHouse;
@@ -51,6 +65,7 @@ public class ServiceProviderModel extends UserProfileModel{
         this.ratingModels = ratingModels;
         this.serviceProviderModel = serviceProviderModel1;
     }
+
 
     //Getters
 
@@ -98,6 +113,7 @@ public class ServiceProviderModel extends UserProfileModel{
 
     //Setters
 
+
     @Override
     public void setId(Long id) {
         this.id = id;
@@ -139,5 +155,4 @@ public class ServiceProviderModel extends UserProfileModel{
     public void setServiceProviderModel(ServiceProviderModel serviceProviderModel) {
         this.serviceProviderModel = serviceProviderModel;
     }
-
 }

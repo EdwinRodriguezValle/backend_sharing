@@ -22,9 +22,9 @@ public class UserProfileModel {
     private int telephone;
 
     //ManyToOne relation with RoleModel
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    RoleModel roleModel;
+//    @ManyToOne
+//    @JoinColumn(name = "role_id")
+//    RoleModel roleModel;
 
 //   OneToOne relation with ServiceUserModel
     @OneToOne
@@ -38,7 +38,8 @@ public class UserProfileModel {
     public UserProfileModel(){}
 
     //Constructor for each attribute
-    public UserProfileModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, RoleModel roleModel, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel) {
+
+    public UserProfileModel(Long id, String name, String lastName, String language, String gender, Date birthday, String address, String email, int telephone, ServiceUserModel serviceUserModel, ServiceProviderModel serviceProviderModel) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -48,10 +49,10 @@ public class UserProfileModel {
         this.address = address;
         this.email = email;
         this.telephone = telephone;
-        this.roleModel = roleModel;
         this.serviceUserModel = serviceUserModel;
         this.serviceProviderModel = serviceProviderModel;
     }
+
 
     //Getters
 
@@ -91,10 +92,6 @@ public class UserProfileModel {
         return telephone;
     }
 
-    public RoleModel getRoleModel() {
-        return roleModel;
-    }
-
     public ServiceUserModel getServiceUserModel() {
         return serviceUserModel;
     }
@@ -104,6 +101,7 @@ public class UserProfileModel {
     }
 
     //Setters
+
 
     public void setId(Long id) {
         this.id = id;
@@ -132,16 +130,13 @@ public class UserProfileModel {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
     public void setTelephone(int telephone) {
         this.telephone = telephone;
-    }
-
-    public void setRoleModel(RoleModel roleModel) {
-        this.roleModel = roleModel;
     }
 
     public void setServiceUserModel(ServiceUserModel serviceUserModel) {
