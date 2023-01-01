@@ -1,5 +1,7 @@
-//package Final_assignment.Sharing.Dtos;
-//
-//public class RoleDto {
-//    public String rolename;
-//}
+package Final_assignment.Sharing.Dtos;
+
+public class RoleDto {
+
+    public String rolename;
+
+}
