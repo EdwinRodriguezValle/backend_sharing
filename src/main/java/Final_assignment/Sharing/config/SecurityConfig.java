@@ -1,87 +1,44 @@
-package Final_assignment.Sharing.config;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
-
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    //Authentication
-    @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder){
-        InMemoryUserDetailsManager man = new InMemoryUserDetailsManager();
-
-        UserDetails u1 = User
-                .withUsername("Yeray")
-                .password(passwordEncoder.encode("Valle"))
-                .roles("USER")
-                .build();
-
-        man.createUser(u1);
-
-        UserDetails u2 = User
-                .withUsername("ans")
-                .password(passwordEncoder.encode("peer"))
-                .roles("USER", "ADMIN")
-                .build();
-
-        man.createUser(u2);
-
-        return man;
-
-    }
-
-    //Authorization
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .httpBasic()
-//                .and()
-//                .authorizeHttpRequests()
-//                .antMatchers(HttpMethod.GET, "/secret").hasRole("ADMIN")
-//                .antMatchers("/**").permitAll()
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//package Final_assignment.Sharing.config;
 //
-//        return http.build();
-//    }
-
-
-
-//    @Configuration
-//    @EnableWebSecurity
-//    public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+//import Final_assignment.Sharing.filter.JwtRequestFilter;
+//import Final_assignment.Sharing.repositories.UserRepository;
+//import Final_assignment.Sharing.security.MyUserDetailsService;
+//import Final_assignment.Sharing.utils.JwtService;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.http.HttpMethod;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.http.SessionCreationPolicy;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+//@EnableWebSecurity
+//public class SecurityConfig {
 //
-//        @Autowired
-//        public CustomUserDetailsService customUserDetailsService;
+//        private final JwtService jwtService;
+//        private final UserRepository userRepository;
 //
-//        @Autowired
-//        private JwtRequestFilter jwtRequestFilter;
-//
-//        @Autowired
-//        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//            auth.userDetailsService(customUserDetailsService);
+//        public SecurityConfig(JwtService service, UserRepository userRepos) {
+//            this.jwtService = service;
+//            this.userRepository = userRepos;
 //        }
 //
-//        @Override
 //        @Bean
-//        public AuthenticationManager authenticationManagerBean() throws Exception {
-//            return super.authenticationManagerBean();
+//        public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder encoder, UserDetailsService udService) throws Exception {
+//            return http.getSharedObject(AuthenticationManagerBuilder.class)
+//                    .userDetailsService(udService)
+//                    .passwordEncoder(encoder)
+//                    .and()
+//                    .build();
+//        }
+//
+//        @Bean
+//        public UserDetailsService userDetailsService() {
+//            return new MyUserDetailsService(this.userRepository);
 //        }
 //
 //        @Bean
@@ -89,26 +46,21 @@ public class SecurityConfig {
 //            return new BCryptPasswordEncoder();
 //        }
 //
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//
-//            //JWT token authentication
+//        @Bean
+//        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //            http
-//                    .csrf().disable()
+//                    .httpBasic().disable()
 //                    .authorizeRequests()
 //                    .antMatchers(HttpMethod.POST, "/users").permitAll()
-//                    .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
-//                    .antMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
-//                    .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-//                    .antMatchers("/authenticated").authenticated()
-//                    .antMatchers("/authenticate").permitAll()
-//                    .anyRequest().permitAll()
+//                    .antMatchers(HttpMethod.POST, "/auth").permitAll()
+//                    .antMatchers("/secret").hasAuthority("ADMIN")
+//                    .antMatchers("/**").hasAnyAuthority("USER", "ADMIN")
 //                    .and()
-//                    .sessionManagement()
-//                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//            http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//                    .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
+//                    .csrf().disable()
+//                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //
+//            return http.build();
 //        }
-
-
-}
+//
+//    }

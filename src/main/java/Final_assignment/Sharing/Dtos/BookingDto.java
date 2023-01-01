@@ -1,9 +1,9 @@
 package Final_assignment.Sharing.Dtos;
 
-import Final_assignment.Sharing.models.ServiceProviderModel;
-import Final_assignment.Sharing.models.ServiceUserModel;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
+//import Final_assignment.Sharing.models.ServiceProviderModel;
+//import Final_assignment.Sharing.models.ServiceUserModel;
+//import jakarta.persistence.FetchType;
+//import jakarta.persistence.ManyToMany;
 
 import java.time.LocalDateTime;
 import java.util.Collection;

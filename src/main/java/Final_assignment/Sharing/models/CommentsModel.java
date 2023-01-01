@@ -3,7 +3,7 @@ package Final_assignment.Sharing.models;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-
+//import javax.persistence.*;
 @Entity
 public class CommentsModel {
     //Auto generated id

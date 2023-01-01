@@ -1,7 +1,6 @@
 //package Final_assignment.Sharing.Dtos;
 //
-//public class UserDto {
+//public class AuthDto {
 //    public String username;
 //    public String password;
-//    public String[] roleModel;
 //}
