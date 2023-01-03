@@ -41,6 +41,8 @@ public class BookingModel {
         this.serviceProviderModels = serviceProviderModels;
     }
 
+
+
     //Getters
     public Long getId() {
         return id;

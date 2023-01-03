@@ -19,7 +19,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -55,11 +54,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+
                 .httpBasic().disable()
                 .authorizeHttpRequests ()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
-                .requestMatchers("/secret").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/update").permitAll()
+                 .requestMatchers("/profile").hasAuthority("ADMIN")
                 .requestMatchers("/**").hasAnyAuthority("USER", "ADMIN")
                 .and()
                 .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
