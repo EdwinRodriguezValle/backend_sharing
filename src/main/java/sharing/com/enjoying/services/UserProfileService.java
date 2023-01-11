@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import sharing.com.enjoying.dtos.UserProfileDto;
 import sharing.com.enjoying.exceptions.RecordNotFoundException;
 import sharing.com.enjoying.models.UserProfileModel;
+import sharing.com.enjoying.repositories.ServiceUserRepository;
 import sharing.com.enjoying.repositories.UserProfileRepository;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class UserProfileService {
 
     //connexion with database
-    @Autowired
+@Autowired
     private UserProfileRepository userProfileRepository;
 
     //CRUD
@@ -37,7 +38,6 @@ public class UserProfileService {
             throw new RecordNotFoundException("User profile not found ");
         }
     }
-
 
     public UserProfileDto addUserProfile(UserProfileDto userProfileDto) {
         userProfileRepository.save(transferToUserProfileModel(userProfileDto));
